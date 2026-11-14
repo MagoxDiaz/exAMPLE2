@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unplugged Computational Thinking & Learning Theory Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero-header">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <span class="hero-eyebrow">K–12 Computer Science &amp; Educational Pedagogy</span>
+        <h1>Unplugged Computational Thinking Dashboard</h1>
+        <p class="hero-subtitle">
+          Ten research-grounded, screen-free classroom activities connecting core computational thinking pillars with foundational learning theories, key theorists, and ready-to-use K–12 teacher prompts.
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <div class="stat-card">
+          <span class="stat-number" id="visibleCount">10</span>
+          <span class="stat-label">Activities Shown</span>
+        </div>
+        <button type="button" id="openSavedBtn" class="btn-saved">
+          <span>★ Saved Lesson Plan</span>
+          <span class="saved-badge" id="savedCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Quick CT Pillar Summary Pills -->
+    <section class="pillar-overview" aria-label="Filter by Computational Thinking Pillar">
+      <button type="button" class="pillar-chip active" data-pillar="all">All Pillars (10)</button>
+      <button type="button" class="pillar-chip" data-pillar="Algorithmic Thinking">Algorithmic Thinking (3)</button>
+      <button type="button" class="pillar-chip" data-pillar="Decomposition">Decomposition (1)</button>
+      <button type="button" class="pillar-chip" data-pillar="Pattern Recognition">Pattern Recognition (2)</button>
+      <button type="button" class="pillar-chip" data-pillar="Abstraction">Abstraction (2)</button>
+      <button type="button" class="pillar-chip" data-pillar="Debugging & Logic">Debugging &amp; Logic (2)</button>
+    </section>
+
+    <!-- Search & Grade Controls -->
+    <section class="toolbar" aria-label="Search and filter controls">
+      <div class="search-wrapper">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search activities, theorists (e.g., Papert, Vygotsky, Bruner), or prompts..."
+          aria-label="Search activities, theorists, or prompts"
+        />
+      </div>
+
+      <div class="toolbar-controls">
+        <div class="select-wrapper">
+          <label for="gradeFilter">Grade Band</label>
+          <select id="gradeFilter">
+            <option value="all">All Grades (K–12)</option>
+            <option value="K-2">Grades K–2 (Early Elementary)</option>
+            <option value="3-5">Grades 3–5 (Upper Elementary)</option>
+            <option value="6-8">Grades 6–8 (Middle School)</option>
+            <option value="9-12">Grades 9–12 (High School)</option>
+          </select>
+        </div>
+
+        <div class="select-wrapper">
+          <label for="viewMode">Card Detail</label>
+          <select id="viewMode">
+            <option value="expanded">Full View (Theory + Prompts)</option>
+            <option value="compact">Compact View</option>
+          </select>
+        </div>
+
+        <button type="button" id="resetBtn" class="btn-outline">Reset Filters</button>
+      </div>
+    </section>
+
+    <!-- Main Cards Container -->
+    <section id="activitiesContainer" class="cards-grid" aria-live="polite">
+      <noscript>
+        <p class="error-banner">Please enable JavaScript in your browser to load the interactive activities dashboard.</p>
+      </noscript>
+    </section>
+  </main>
+
+  <!-- Full Lesson Detail Modal -->
+  <div id="lessonModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalHeading" hidden>
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-dialog">
+      <div class="modal-top">
+        <span id="modalBadges"></span>
+        <button type="button" id="closeModalBtn" class="icon-close" aria-label="Close lesson view">&times;</button>
+      </div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Saved Lesson Queue Drawer -->
+  <aside id="savedDrawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+    <div class="modal-overlay" id="drawerOverlay"></div>
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h2 id="drawerTitle">★ Saved K–12 Lesson Queue</h2>
+        <button type="button" id="closeDrawerBtn" class="icon-close" aria-label="Close saved lessons">&times;</button>
+      </div>
+      <p class="drawer-sub">Save activities to build a custom unplugged unit plan and copy all teacher prompts at once.</p>
+      <div id="savedList" class="saved-list"></div>
+      <div class="drawer-footer">
+        <button type="button" id="copyAllSavedBtn" class="btn-primary">Copy All Saved Prompts</button>
+        <button type="button" id="clearSavedBtn" class="btn-outline">Clear All</button>
+      </div>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-credit">
+        Developed and maintained by Magalis Diaz using AI tools; licensed
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.
+      </p>
+      <p class="footer-email">
+        Questions? Reach out at <a href="mailto:mdiaztorres@umass.edu">mdiaztorres@umass.edu</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
